@@ -16,11 +16,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var CxcxcApp = /** @class */ (function (_super) {
     __extends(CxcxcApp, _super);
-    function CxcxcApp() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function CxcxcApp(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            clickFreq: 0
+        };
+        return _this;
     }
+    CxcxcApp.prototype.addClickFreq = function () {
+        this.setState({
+            clickFreq: this.state.clickFreq + 1
+        });
+    };
     CxcxcApp.prototype.render = function () {
-        return (React.createElement("input", { type: "button", value: "這是一個按鍵" }));
+        var _this = this;
+        return (React.createElement("input", { type: "button", onClick: function () { return _this.addClickFreq(); }, value: this.state.clickFreq }));
     };
     return CxcxcApp;
 }(React.Component));
